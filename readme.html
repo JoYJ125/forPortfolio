@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조유정 | 강점 발굴 및 포트폴리오 서사 문서</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.75;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+        }
+
+        /* Fixed Navigation Header */
+        header.nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 1.5rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5.5rem 1.5rem 4rem;
+        }
+
+        .doc-title-box {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .doc-title-box h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-title-box p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 3.5rem;
+            scroll-margin-top: 5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .subsection-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        /* Cards & Content Boxes */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        ul.content-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.content-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.6rem;
+            word-break: keep-all;
+        }
+
+        ul.content-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0.3rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Table Style */
+        .table-container {
+            overflow-x: auto;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.93rem;
+        }
+
+        th, td {
+            padding: 1rem 1.1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--secondary);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Text Blockquote Styles */
+        .text-block {
+            background-color: #ffffff;
+            border-left: 4px solid var(--primary);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1rem;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            word-break: keep-all;
+        }
+
+        .text-block p {
+            margin-bottom: 0.8rem;
+        }
+
+        .text-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.55rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            background-color: #e0e7ff;
+            color: #3730a3;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Portfolio Structure Styles */
+        .portfolio-box {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .portfolio-header {
+            border-bottom: 2px dashed var(--border);
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            border-top: 1px solid var(--border);
+            background: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            main { padding-top: 4.5rem; }
+            .doc-title-box h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="nav-header">
+        <div class="nav-container">
+            <a href="#" class="logo">조유정 포트폴리오 서사 문서</a>
+            <ul class="nav-links">
+                <li><a href="#sec1">1. 주요 리추얼</a></li>
+                <li><a href="#sec2">2. 강점 지도</a></li>
+                <li><a href="#sec3">3. 지운 항목</a></li>
+                <li><a href="#sec4">4. 서사 카드</a></li>
+                <li><a href="#sec5">5. 자기소개서</a></li>
+                <li><a href="#sec6">6. 작업 기록</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Header Banner -->
+        <div class="doc-title-box">
+            <h1>조유정 님의 강점 발굴 및 포트폴리오 서사 문서</h1>
+            <p>Infrastructure Security Portfolio Document (문서 내부 기록 기반)</p>
+        </div>
+
+        <!-- 1. 리추얼 기록 -->
+        <section id="sec1">
+            <h2 class="section-title">1. 되풀이되는 말, 힘이 났던 날, 놀란 순간의 기록 (주요 리추얼 대목)</h2>
+            
+            <div class="card">
+                <div class="card-title">💬 되풀이되는 말</div>
+                <ul class="content-list">
+                    <li><strong>2026-08-13:</strong> "조유정 님은 첫날인데도 낯선 자리에 먼저 다가가서 분위기를 풀어주셨다."</li>
+                    <li><strong>2026-08-27:</strong> "아침마다 가장 밝고 큰 목소리로 반갑게 인사를 건네준다."</li>
+                    <li><strong>2026-09-10:</strong> "막혀서 헤매고 있을 때 먼저 다가와 친절하고 쉽게 원인을 설명하며 같이 해결해 준다."</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🔥 힘이 났던 날</div>
+                <ul class="content-list">
+                    <li><strong>2026-08-18:</strong> 팀원들이 내가 내놓은 의견에 크게 호응해 주고 발표할 때마다 고개를 끄덕여주어 조별 토론에서 자신감과 에너지를 얻었던 날.</li>
+                    <li><strong>2026-09-02:</strong> 공부에 갈증을 느끼던 차에 친구들을 위해 직접 디스코드 스터디방을 개설하고 추진하자 다들 적극적으로 참여하며 고마워해 보람을 느꼈던 날.</li>
+                    <li><strong>2026-09-10:</strong> 복잡한 실습 과제를 끝까지 완수해 내고, 도움이 필요했던 동료와 함께 에러 원인을 찾아 해결해 내며 깊은 성취감을 느꼈던 날.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">😲 놀란 순간</div>
+                <ul class="content-list">
+                    <li><strong>2026-08-13:</strong> 3일 차에 중간 합류했음에도 친화력 덕분에 첫날부터 원래 있던 수강생처럼 자연스럽게 어울리는 스스로의 모습을 확인한 순간.</li>
+                    <li><strong>2026-09-04:</strong> 짐 때문에 머뭇거리시던 청소 아주머니께 먼저 다가가 엘리베이터를 함께 타시라고 권해드렸을 때 아주머니께서 진심으로 감사해하는 모습을 보고 놀라던 순간.</li>
+                    <li><strong>2026-09-09:</strong> 가상머신과 설정 파일이 통째로 날아가는 큰 오류가 발생했음에도 당황하기보다 "오~ 오류?" 하며 웃으며 원인을 찾아 해결해 내는 스스로의 유연성에 놀란 순간.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. 강점 지도 -->
+        <section id="sec2">
+            <h2 class="section-title">2. 상위 강점 Top 3 분석 표 (강점 지도)</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>핵심 강점</th>
+                            <th>날짜가 있는 장면</th>
+                            <th>동료가 말한 것 / 자신의 느낌</th>
+                            <th>지킨 가치</th>
+                            <th>관련 과제 (1~8번)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. 친화력과 사교성</strong><br><small>(반복 18회)</small></td>
+                            <td>
+                                <strong>2026-08-18</strong><br>조별 토론 자리가 어색할 때 먼저 다가가 말을 건네며 분위기를 부드럽게 이끎.<br><br>
+                                <strong>2026-09-21</strong><br>처음 본 부산A반 수강생에게 스스럼없이 다가가 이야기를 나눔.
+                            </td>
+                            <td>
+                                <strong>동료의 말:</strong><br>
+                                "첫날인데도 낯선 자리에 먼저 다가가 주셨다."<br>
+                                "다른 반 수강생과도 쉽게 친해질 정도로 친화력이 뛰어납니다."
+                            </td>
+                            <td>환대, 연결,<br>공동체성</td>
+                            <td>
+                                <strong>1번</strong> (조별 과제/팀 빌딩)<br>
+                                <strong>2번</strong> (타반 교류/네트워킹)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. 밝은 인사와 활력 전달</strong><br><small>(반복 17회)</small></td>
+                            <td>
+                                <strong>2026-08-27</strong><br>아침 강의실에 들어오며 밝고 큰 목소리로 아침 인사를 건네 분위기를 활기차게 만듦.<br><br>
+                                <strong>2026-09-14</strong><br>월요일 아침 침체된 분위기 속에서도 먼저 밝게 인사하며 에너지를 전달함.
+                            </td>
+                            <td>
+                                <strong>동료의 말:</strong><br>
+                                "아침마다 가장 밝고 큰 목소리로 인사를 해줘서 에너지를 얻습니다."<br><br>
+                                <strong>자신의 느낌:</strong><br>
+                                내가 먼저 긍정적인 에너지를 보낼 때 주변도 함께 밝아짐을 느낌.
+                            </td>
+                            <td>긍정, 기쁨,<br>진정성</td>
+                            <td>
+                                <strong>1번</strong> (조별 과제/팀 분위기 조성)<br>
+                                <strong>3번</strong> (일상 리추얼/아침 습관)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. 동료 지원 및 협력</strong><br><small>(반복 11회)</small></td>
+                            <td>
+                                <strong>2026-09-09</strong><br>가상머신 및 설정 파일 에러로 막힌 동료 곁에서 원인을 함께 추론해 해결해 줌.<br><br>
+                                <strong>2026-09-10</strong><br>과제 접근을 어려워하는 동료에게 친절하게 방향성을 설명하고 실습을 도와줌.
+                            </td>
+                            <td>
+                                <strong>동료의 말:</strong><br>
+                                "막혔을 때 선뜻 다가와 쉽고 친절하게 알려주고 자기 일처럼 함께 고쳐줍니다."
+                            </td>
+                            <td>이타심, 협력,<br>동반 성장</td>
+                            <td>
+                                <strong>4번</strong> (기술 실습/에러 해결)<br>
+                                <strong>5번</strong> (동료 피어 코칭/스터디)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. 지운 항목 -->
+        <section id="sec3">
+            <h2 class="section-title">3. 에이전트 제안 항목 중 지운 항목 및 이유</h2>
+            <div class="card">
+                <ul class="content-list">
+                    <li><strong>제안받았던 후보 항목:</strong> <code>유연하고 평온한 마음가짐 (멘탈 관리 및 긍정성)</code> (Top 10 중 10번 항목)</li>
+                    <li><strong>지운 이유:</strong> 상위 핵심 강점 3가지를 선정하는 과정에서 반복 횟수(5회)가 상대적으로 적고, '친화력', '밝은 인사', '동료 지원'과 같이 타인과의 관계 및 협력에서 명확하게 드러나는 핵심 강점에 집중하기 위해 지웠습니다.</li>
+                    <li><strong>대체/보완:</strong> 해당 항목을 지운 자리는 기록 상에서 가장 빈번하게 증명된 <strong>`친화력과 사교성`</strong>, <strong>`밝은 인사와 활력 전달`</strong>, <strong>`동료 지원 및 협력`</strong> 3대 상위 강점으로 표를 완성하였습니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4. 서사 카드 -->
+        <section id="sec4">
+            <h2 class="section-title">4. 서사 카드: 회복탄력성 이야기 (3인칭 초안 및 1인칭 완성본)</h2>
+            
+            <div class="card">
+                <div class="card-title">📌 [첫 행동: 문서 내 고비 장면 및 태도 변화]</div>
+                <ul class="content-list">
+                    <li><strong>고난 장면:</strong> 교육 과정 3일 차 중간 합류 당시 느꼈던 어색함과, 2026년 9월 9일 실습 중 가상머신과 주요 설정 파일이 통째로 날아가는 기술적 에러와 위기를 맞닥뜨린 순간.</li>
+                    <li><strong>바꾼 점:</strong> 큰 예기치 못한 에러에 당황하거나 좌절하기보다 "오~ 오류?"라며 웃어넘기는 유연성을 발휘하고, 막힌 동료 곁에 먼저 다가가 원인을 함께 추론하고 고쳐나가는 협력적 태도를 확립함.</li>
+                </ul>
+            </div>
+
+            <div class="subsection-title">📝 [3인칭 초안]</div>
+            <div class="text-block">
+                조유정 님은 7주간의 과정 속에서 기술적 위기와 어색함을 유연하게 극복하는 힘을 보여주었다. 2026년 8월 13일, 교육 과정 3일 차에 뒤늦게 합류했을 때 낯선 환경에 위축될 수 있었지만, 특유의 친화력으로 먼저 다가가 인사를 건네며 반 분위기에 자연스럽게 녹아들었다.<br><br>
+                나아가 2026년 9월 9일 가상머신과 설정 파일이 통째로 날아가는 기술적 위기 상황 속에서도 당황하지 않고 "오~ 오류?" 하며 웃음을 잃지 않았다. 그녀는 막혀서 헤매는 동료 곁으로 먼저 선뜻 다가가 에러 원인을 함께 추론하고 고쳐내며, 위기의 순간마다 공동체의 힘으로 문제를 해결해 냈다.<br><br>
+                고난의 순간을 지난 조유정 님은 사람들에게 밝은 에너지를 전달하고, 어려움을 겪는 동료에게 가장 먼저 손을 내미는 든든한 동반자로 성장했다. 앞으로 그녀는 시스템 인프라 현장에서 사람과 기술을 안전하고 따뜻하게 연결하는 핵심 엔지니어로 나아가고자 한다.
+            </div>
+
+            <div class="subsection-title">✍️ [1인칭 완성본]</div>
+            <div class="text-block" style="border-left-color: #16a34a;">
+                나는 3일 차 중간 합류의 어색함과 가상머신 설정 파일이 통째로 날아가는 예기치 못한 기술적 난관 속에서 유연함과 협력의 가치를 배웠다. 실습 중 예기치 못한 큰 오류가 터졌을 때도 멘붕에 빠지기보다 "오~ 오류?" 하며 덤덤하게 웃어넘기는 법을 터득했다.<br><br>
+                2026년 8월 13일 첫 합류 날부터 먼저 다가가 인사를 건넸던 것처럼, 동료가 기술적 문제로 막혀서 헤매고 있을 때 선뜻 다가가 원인을 함께 추론하고 에러를 고쳐내며 같이 성장하는 즐거움을 확인했다. 나 혼자 풀기 어려운 문제든 동료의 어려움이든 함께 머리를 맞대어 극복하는 경험을 차곡차곡 쌓아왔다.<br><br>
+                위기를 유연하게 넘긴 경험을 바탕으로, 나는 매일 아침 밝은 인사로 팀 분위기를 돋우고 동료의 어려움을 함께 해결하는 강인한 사람이 되었다. 앞으로 나는 인프라 시스템 현장에서 기술적 안정성뿐만 아니라 팀 전체에 긍정적인 활력을 불어넣는 신뢰할 수 있는 보안 전문가로 나아갈 것이다.
+            </div>
+
+            <div class="card">
+                <div class="card-title">🗣️ [동료 피드백]</div>
+                <ul class="content-list">
+                    <li>
+                        <strong>동료 1 피드백</strong><br>
+                        - Q1. 나 같아?: "응, 완전 유정 님 같다. 아침마다 밝게 인사해 주고 수업이나 실습 중에 오류 나면 같이 웃으면서 해결해 주는 평소 모습이 그대로 담겨 있어."<br>
+                        - Q2. 지어낸 느낌이 있어?: "전혀 없다. 실제 수업 시간에 같이 고생하고 에러 극복했던 일들이라 다 사실로 느껴져."
+                    </li>
+                    <li style="margin-top: 0.5rem;">
+                        <strong>동료 2 피드백</strong><br>
+                        - Q1. 나 같아?: "응! 어색할 수 있는 상황에서도 항상 먼저 다가와 주고 긍정적으로 분위기 풀어주는 유정 님 특유의 성격이 아주 잘 드러나."<br>
+                        - Q2. 지어낸 느낌이 있어?: "전혀 안 느껴진다. 3대 강점이랑 실제 에러 해결했던 에피소드가 자연스럽게 이어져서 진정성 있게 읽혔어."
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. 자기소개서 -->
+        <section id="sec5">
+            <h2 class="section-title">5. 자기소개서 (1,000자 안팎 역량 중심 축약본)</h2>
+            <div class="text-block" style="border-left-width: 6px;">
+                <p><strong>안녕하세요, 기술의 안정성과 팀의 연결을 책임지는 지원자 조유정입니다.</strong></p>
+                <p>7주간의 시스템 인프라 과정 중 가상머신과 주요 설정 파일이 통째로 날아가는 예기치 못한 기술적 에러와 난관을 맞닥뜨린 적이 있습니다. 하지만 저는 당황하거나 좌절하는 대신 "오~ 오류?"라며 덤덤하게 웃어넘기는 유연함을 배웠고, 혼자 고독하게 싸우기보다 현장에서 실재하는 기술적 문제를 동료들과 직접 소통하며 해결하는 실천적인 자세를 다졌습니다.</p>
+                <p>이러한 경험은 교육 과정 동안 세 가지 핵심 강점으로 더욱 견고하게 다져졌습니다.</p>
+                <p>첫째, <strong>'친화력과 사교성'</strong>입니다. 3일 차에 뒤늦게 합류했던 첫날부터 먼저 밝게 다가가 인사를 건넸고, 어색한 팀 프로젝트나 타 클래스와의 교류 자리마다 징검다리가 되어 협력하는 분위기를 만들었습니다.</p>
+                <p>둘째, <strong>'밝은 인사와 활력 전달'</strong>입니다. 매일 아침 가장 밝은 인사로 분위기를 환하게 전환하며 팀 전체에 긍정적인 에너지를 불어넣는 분위기 메이커 역할을 충실히 해냈습니다.</p>
+                <p>셋째, <strong>'동료 지원 및 협력'</strong>입니다. 실습 중 시스템 에러가 발생했을 때 막혀있는 동료 곁에 먼저 다가가 에러 원인을 함께 분석하고 트러블슈팅을 완수했습니다.</p>
+                <p>고비를 지나 더 넓어진 저는, 혼자서만 일하는 단독 플레이어가 아니라 기술과 사람을 한데 잇는 든든한 동반자로 성장했습니다. 이제 저는 인프라 보안 전문가로서 견고한 시스템 보안 체계를 구축함과 동시에, 팀 내 소통과 협력을 이끄는 핵심 인재로 기여하고 싶습니다.</p>
+                <p><strong>함께 일할 때 가장 든든하고 신뢰할 수 있는 보안 엔지니어 조유정이 되겠습니다.</strong></p>
+            </div>
+        </section>
+
+        <!-- 6. 작업 수행 기록 -->
+        <section id="sec6">
+            <h2 class="section-title">6. 작업 수행 기록 및 제출 정보</h2>
+            
+            <div class="card">
+                <div class="card-title">🤖 ① AI에게 맡긴 일</div>
+                <ul class="content-list">
+                    <li>제시된 리추얼 기록 데이터 분석 및 반복 패턴 기반 강점 Top 10 추출.</li>
+                    <li>강점 Top 3 표 구조화 및 지킨 가치, 관련 과제 매핑.</li>
+                    <li>문서 내 고비(가상머신 오류 등)와 7주 기록을 잇는 3인칭 회복탄력성 서사 초안 작성.</li>
+                    <li>1인칭 자기소개서 초안을 1,000자 안팎 규격으로 축약 및 정돈.</li>
+                    <li>포트폴리오 뼈대 구조 설계 및 과제별 증거 배치 구조화.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">👤 ② 내가 직접 판단한 일</div>
+                <ul class="content-list">
+                    <li>외부 대화 정보 제외 및 주어진 문서 내의 에피소드(가상머신 날아간 상황 등)만으로 고난 장면 최종 선정.</li>
+                    <li>에이전트가 제안한 Top 10 강점 중 반복 횟수가 적은 10번 항목을 제외하고 상위 3개 핵심 강점 최종확정.</li>
+                    <li>3인칭 초안을 바탕으로 나다운 말투와 솔직한 표현을 담아 1인칭 완성본 직접 재작성.</li>
+                    <li>자기소개서의 <strong>첫 문장</strong>("안녕하세요, 기술의 안정성과 팀의 연결을 책임지는 지원자 조유정입니다.")과 <strong>마지막 문장</strong>("함께 일할 때 가장 든든하고 신뢰할 수 있는 보안 엔지니어 조유정이 되겠습니다.") 직접 작성.</li>
+                    <li>동료 2인에게 1인칭 서사를 읽힌 후 실제 피드백 질문 및 응답 기록 수집.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🚫 ③ AI 제안을 따르지 않은 일</div>
+                <ul class="content-list">
+                    <li><strong>AI의 10번 강점 제안(`유연하고 평온한 마음가짐`) 미채택:</strong> 데이터상 반복 횟수가 상대적으로 적고(5회), 자소서 및 포트폴리오의 선명성을 위해 가장 독보적으로 검증된 상위 3개 강점(친화력, 활력, 동료 지원)에 일관되게 집중하고자 삭제 판단.</li>
+                    <li><strong>문서 외 외부 추측 에피소드 미채택:</strong> 주어진 문서에 없는 외부 대화 기록 기반 내용 제외 후, 오직 제공된 파일 속 실제 증거 기록으로만 구성함.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 조유정. All rights reserved. | Infrastructure Security Portfolio Document</p>
+    </footer>
+
+</body>
+</html>
